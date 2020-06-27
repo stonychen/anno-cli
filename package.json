@@ -1,5 +1,5 @@
 {
-  "name": "anno",
+  "name": "anno-cli",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,12 +15,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stonychen/anno-cli.git"
+    "url": "git+https://github.com/stonychen/anno.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/stonychen/anno-cli/issues"
+    "url": "https://github.com/stonychen/anno/issues"
   },
-  "homepage": "https://github.com/stonychen/anno-cli#readme"
+  "homepage": "https://github.com/stonychen/anno#readme",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
 }
