@@ -27,3 +27,7 @@ rl.question('What do you think of Node.js? ', (answer) => {
 
   rl.close();
 });
+
+exports.printMsg = function() {
+    console.log("This is a message from the anno-cli package");
+  }

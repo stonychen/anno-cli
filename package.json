@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "bin": "./index.js",
+  "bin":  "index.js",
+  "author": "Stony Chen",
+  "license": "MIT",
+  "keywords":[""],
   "dependencies": {},
   "devDependencies": {
     "chalk": "^4.1.0",
@@ -16,13 +19,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stonychen/anno.git"
+    "url": "git+https://github.com/stonychen/anno-cli.git"
   },
-  "author": "",
-  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/stonychen/anno/issues"
+    "url": "https://github.com/stonychen/anno-cli/issues"
   },
-  "homepage": "https://github.com/stonychen/anno#readme",
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
+  "homepage": "https://github.com/stonychen/anno-cli#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
 }
