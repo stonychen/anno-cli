@@ -1,8 +1,9 @@
 {
-  "name": "anno-cli",
+  "name": "anno",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": "./index.js",
   "dependencies": {},
   "devDependencies": {
     "chalk": "^4.1.0",
