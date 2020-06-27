@@ -28,6 +28,6 @@
   },
   "homepage": "https://github.com/stonychen/anno-cli#readme",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://registry.npmjs.org/"
   }
 }
