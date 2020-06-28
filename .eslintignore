@@ -1,9 +1,0 @@
-**/dist/*
-public/
-.vscode/
-# src/**/*.d.ts
-# src/**/*.d.tsx
-# src/**/*.ts
-# src/**/*.tsx
-# tests/**/*.d.ts
-# tests/**/*.ts

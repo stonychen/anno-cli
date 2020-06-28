@@ -1,2 +1,0 @@
-
-console.log('<%= people.join(", "); %>')
