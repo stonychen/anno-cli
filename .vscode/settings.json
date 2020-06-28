@@ -2,21 +2,23 @@
   "editor.fontSize": 14,
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
+  "editor.suggest.insertMode": "replace",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.find.seedSearchStringFromSelection": false,
+
   "files.eol": "\n",
   "files.exclude": {
-    // "**/dist": true
-    "package-lock.json": true,
-    "yarn-error.json": true,
+    "package-lock.json": true
   },
   "files.associations": {
     "*.ts": ["typescript"],
     "*.tsx": ["typescriptreact"],
-    "*.js": ["javascriptreact"],
+    "*.js": ["javascript"],
     "*.jsx": ["javascriptreact"]
   },
-
-  "editor.suggest.insertMode": "replace",
   "files.insertFinalNewline": true,
+
   "workbench.colorCustomizations": {},
   "workbench.view.alwaysShowHeaderActions": true,
 
@@ -27,7 +29,6 @@
     "typescript",
     "typescriptreact",
     "markdown",
-    "vue",
     "HTML (Eex)"
   ],
   "auto-close-tag.excludedTags": [
@@ -62,50 +63,15 @@
     "esnext",
     "jspdf",
     "orgs",
-    "styl",
-    "vnode",
-    "vuejs",
-    "vuepress",
-    "vuex",
-    "yxxx"
+    "styl"
   ],
-  //
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  // "typescript.tsdk": "node_modules/typescript/lib",
   "search.exclude": {
     "**/node_modules": false
   },
-  "javascript.implicitProjectConfig.experimentalDecorators": true,
-
-
-  // eslint 
+  // eslint
   "eslint.alwaysShowStatus": true,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-  ],
-  "beautify.config": {
-    "brace_style": "collapse,preserve-inline",
-    "indent_size": 2,
-    "indent_char": " ",
-    "jslint_happy": true,
-    "unformatted": [""],
-    "css": {
-      "indent_size": 2
-    }
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
 
-  },
-
-  // "prettier.printWidth": 100,
-  // "prettier.trailingComma": "es5",
-  // "prettier.useEditorConfig": false,
-  "typescript.tsdk": "node_modules/typescript/lib",
-
-  // "prettier-eslint": true,
   "autoimport.absolute": true,
   "autoimport.showNotifications": true,
   "autoimport.semicolon": false,
@@ -127,18 +93,15 @@
     {
       "text": "TODO:",
       "color": "#000",
-      "backgroundColor": "yellow",
+      "backgroundColor": "yellow"
     }
   ],
-  "editor.find.seedSearchStringFromSelection": false,
 
-  "javascript.autoClosingTags": true,
-  "markdownlint.customRules": [
-    "MD001"
-  ],
+  "markdownlint.customRules": ["MD001"],
   "markdownlint.run": "onSave",
 
   // typescript plugin
+  "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
   "typescript.format.semicolons": "remove",
   "typescript.locale": "zh-CN",
@@ -149,6 +112,10 @@
   "typescript.suggest.autoImports": false,
   "typescript.suggest.completeFunctionCalls": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "editor.formatOnSave": true,
-
+  "javascript.format.semicolons": "remove",
+  "javascript.autoClosingTags": true,
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "javascript.format.enable": false,
+  "javascript.implicitProjectConfig.experimentalDecorators": true
 }
