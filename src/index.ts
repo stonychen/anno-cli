@@ -1,29 +1,28 @@
-#!/usr/bin/env ts-node --script-mode --transpile-only --files
+#!/usr/bin/env
 
-// import * as fs from 'fs';
-// import * as path from 'path';
+import * as fs from 'fs'
+import * as path from 'path'
+//import chalk from 'chalk'
+import * as inquirer from 'inquirer'
+import './require-tm'
 
-// const CHOICES = fs.readdirSync(path.join(__dirname, 'templates'));
-// const QUESTIONS = [{
-//     name: 'template',
-//     type: 'list',
-//     message: 'What project template would you like to generate?',
-//     choices: CHOICES
-//   },
-//   {
-//     name: 'name',
-//     type: 'input',
-//     message: 'Project name:'
-//   }
-// ];
+const CHOICES = fs.readdirSync(path.join(__dirname, '../templates'))
+const QUESTIONS = [
+  {
+    name: 'template',
+    type: 'list',
+    message: 'What project template would you like to generate?',
+    choices: CHOICES,
+  },
+  {
+    name: 'name',
+    type: 'input',
+    message: 'Project name:',
+  },
+]
+inquirer.prompt(QUESTIONS).then((answers) => {
+  console.log(answers)
+})
 
-// import * as inquirer from 'inquirer';
-// import chalk from 'chalk';
-// inquirer.prompt(QUESTIONS)
-//   .then(answers => {
-//     console.log(answers);
-//   });
-
-import chalk from 'chalk'
-console.log(chalk.blue('Hello world!'))
-console.log('Hello world!')
+// console.log(chalk.blue('Hello world!'))
+// console.log('Hello world!')

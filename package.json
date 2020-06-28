@@ -2,11 +2,15 @@
   "name": "anno-cli",
   "version": "1.0.1",
   "description": "This is anno-cli",
-  "main": ".dist/main.js",
-  "bin": ".dist/main.js",
+  "main": ".dist/index.js",
+  "bin": ".dist/index.js",
   "author": "Stony Chen",
   "license": "MIT",
   "keywords": [],
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "build": "tsc"
+  },
   "dependencies": {},
   "devDependencies": {
     "@types/chalk": "^2.2.0",
@@ -22,11 +26,9 @@
     "prettier": "2.0.5",
     "shx": "^0.3.2",
     "ts-node": "^8.10.2",
-    "typescript": "^3.9.5"
-  },
-  "scripts": {
-    "dev": "ts-node src/index.ts",
-    "build": "tsc && shx rm -rf dist/templates && shx cp -r src/templates dist"
+    "typescript": "^3.9.5",
+    "tslint": "^5.11.0",
+    "tslint-microsoft-contrib": "^5.2.1"
   },
   "repository": {
     "type": "git",
