@@ -2,12 +2,13 @@ import { Component, Vue } from 'vue-property-decorator'
 import style from './index.module.scss'
 
 
-@Component
+@Component({})
 export default class <%= config.className %> extends Vue {
 
   private render() {
     return (
-      <div class={style.container} id='<%= config.className %>Container'>
+      <div class={style.home} id='text'>
+        This is home page
       </div>
     )
   }
