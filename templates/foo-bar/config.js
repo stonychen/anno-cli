@@ -8,7 +8,7 @@ const config = {
     {
       name: 'className',
       type: 'input',
-      message: 'class name:',
+      message: 'What class name do you prefer? className:',
       validate: function (input) {
         if (/^([A-Za-z\-\_\d])+$/.test(input)) return true
         else return 'Class name may only include letters, numbers, underscores and hashes.'

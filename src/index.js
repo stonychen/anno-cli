@@ -21,25 +21,25 @@ choices.push(...defaultChoices)
 
 const questions = [
   {
-    name: '$template',
+    name: '$TEMPLATE',
     type: 'list',
     message: 'What template would you like to generate?',
     choices: choices,
   },
   {
-    name: '$path',
+    name: '$PATH',
     type: 'input',
-    message: 'Path:',
+    message: 'What path would you like to generate to? path:',
     validate: function (input) {
       if (/^([A-Za-z\-\_\/\d])+$/.test(input)) return true
-      else return 'folder name may only include letters, numbers, underscores and hashes.'
+      else return 'Path may only include letters, numbers, underscores and hashes.'
     },
   },
 ]
 
 inquirer.prompt(questions).then((answers) => {
-  const isLocal = answers.$template.indexOf(cLocal) === -1 ? _DEFAULTROOT : _USERROOT
-  const tmp = answers.$template.replace(cLocal, '')
+  const isLocal = answers.$TEMPLATE.indexOf(cLocal) === -1 ? _DEFAULTROOT : _USERROOT
+  const tmp = answers.$TEMPLATE.replace(cLocal, '')
 
   const templatePath = `${isLocal ? _DEFAULTROOT : _USERROOT}/templates/${tmp}`
   const config = require(templatePath + '/config')
@@ -50,7 +50,7 @@ inquirer.prompt(questions).then((answers) => {
   })
 })
 
-function handleTemplates(templatePath, answers) {
+function handleTemplates(templatePath, config, answers) {
   let tempDirs = fs.readdirSync(templatePath)
   tempDirs.map((file) => {
     if (file === 'config.js') return
@@ -59,7 +59,7 @@ function handleTemplates(templatePath, answers) {
     const stats = fs.statSync(origFilePath)
 
     if (stats.isFile()) {
-      const destPath = `${_USERROOT}/${answers.$path}/${file}`
+      const destPath = `${_USERROOT}/${answers.$PATH}/${file}`
 
       // Copy file to destination
       handleSingleFile(origFilePath, destPath, file, answers)
@@ -67,7 +67,7 @@ function handleTemplates(templatePath, answers) {
       // If it's a folder, we need to judge it whether we need to copy it
       // to other folder according to config
       const replacePath = config.map && config.map[file] ? config.map[file] : file
-      const destPath = `${_USERROOT}/${replacePath}/${answers.$path}`
+      const destPath = `${_USERROOT}/${replacePath}/${answers.$PATH}`
 
       handleFolder(origFilePath, destPath, answers)
     }
@@ -75,13 +75,15 @@ function handleTemplates(templatePath, answers) {
 }
 
 function handleSingleFile(orig, dest, file, answers) {
-  const contents = fs.readFileSync(orig, 'utf8')
+  const content = fs.readFileSync(orig, 'utf8')
   const writePath = `${dest}/${file}`
   // Apply ejs to file
-  // ...
-  console.log(orig, writePath)
+
+  let newContent = ejs.render(content, { root: answers })
+
+  console.log(writePath)
   fsp.mkdir(dest, () => {
-    fs.writeFileSync(writePath, contents, 'utf8')
+    fs.writeFileSync(writePath, newContent, 'utf8')
   })
 }
 
