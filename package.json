@@ -1,12 +1,17 @@
 {
   "name": "anno-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "This is anno-cli",
   "main": "./src/index.js",
   "bin": "./src/index.js",
   "author": "Stony Chen",
   "license": "MIT",
-  "keywords": ["anno-cli","anno.js","cli","template"],
+  "keywords": [
+    "anno-cli",
+    "anno.js",
+    "cli",
+    "template"
+  ],
   "scripts": {
     "dev": "node ./src/index.js"
   },
