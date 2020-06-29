@@ -8,7 +8,7 @@ anno-cli is cli tool which can be used with [Anno.js](https://stonychen.github.i
 
 ### Installation
 
-`npm i -g anno-cli` or `npm i -save-dev anno-cli` to install the latest version of anno-cli
+`npm i -g anno-cli` or `npm i -save-dev anno-cli` to install the latest version of anno-cli.
 
 ### Generate template
 
@@ -77,8 +77,8 @@ templates
 
 #### Step 2 Config template
 
-1. config.map is used for matching the template path './templates/src' to the destination path './src/(path)'
-2. config.prompts is used for defining variables, which might be used in template. for more detail, refer to [inquirer](https://www.npmjs.com/package/inquirer). 
+1. config.map is used for matching the template path `./templates/src` to the destination path `./src/(path)`.
+2. config.prompts is used for defining variables, which might be used in template. For more detail, refer to [inquirer](https://www.npmjs.com/package/inquirer). 
   
 config.js
 ```
@@ -107,7 +107,8 @@ module.exports = config
 
 #### Step 3 Edit template file
 
-All variables are under root, like `root.className`, Which is same it in `config.js`. We can get path which we input from `root.$PATH` and get template which we selected from `root.$TEMPLATE`
+1. We use [ejs](https://github.com/mde/ejs) to render remplate.
+2. All variables are under root, like `root.className`, which should be same as it in `config.js`. We can get path from `root.$PATH` and get templat which we selected from `root.$TEMPLATE`.
 
 templates/foo-bar/src/index.page.tsx
 ```
