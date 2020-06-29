@@ -113,7 +113,7 @@ module.exports = config
 templates/foo-bar/src/index.page.tsx
 ```
 import { Component, Vue } from 'vue-property-decorator'
-import Bar from './components/bar'
+import Bar from './bar'
 import style from './index.module.scss'
 
 @Component
@@ -139,7 +139,7 @@ NOTE:If you don't wanna generate test files, we cannot decide except you don't d
 src/foo-bar/index.page.tsx
 ```
 import { Component, Vue } from 'vue-property-decorator'
-import Bar from './components/bar'
+import Bar from './bar'
 import style from './index.module.scss'
 
 @Component

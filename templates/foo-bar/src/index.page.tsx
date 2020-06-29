@@ -1,5 +1,5 @@
 import { Component, Vue } from 'vue-property-decorator'
-import Bar from './components/bar'
+import Bar from './bar'
 import style from './index.module.scss'
 
 @Component
