@@ -12,9 +12,9 @@ anno-cli is cli tool which can be used with [Anno.js](https://stonychen.github.i
 
 ### Generate template
 
-Run `anno-cli t` to generate template, if you can define your own local template on local folder of `./templates`.
+Run `anno-cli t` to generate template. 
 
-#### step 1 Choose a template
+#### Step 1 Choose a template
 
 ```
 $ anno-cli t
@@ -23,7 +23,7 @@ $ anno-cli t
   foo-bar
 ```
 
-#### step 2 Input path
+#### Step 2 Input path
 
 ```
 $ anno-cli t
@@ -31,7 +31,7 @@ $ anno-cli t
 ? What path would you like to generate to? path: sell/foo-bar
 ```
 
-#### step 3 Input class name, and enter. You will successfully generate files according the template. NOTE: The class name can be defined in your own way.
+#### Step 3 Input class name, and enter. You will successfully generate files according the template. NOTE: The class name can be defined in your own way.
 
 ```
 $ anno-cli t
@@ -55,7 +55,9 @@ $ anno-cli t
 
 ### Define Your Own Template
 
-#### Template folder structure
+You can define your own local template on local folder `./templates`.
+
+#### Step 1 Template folder structure
 ```
 templates
 ├── foo-bar
@@ -73,7 +75,7 @@ templates
 ```
 
 
-#### Config template
+#### Step 2 Config template
 
 1. config.map is used for matching the template path './templates/src' to the destination path './src/(path)'
 2. config.prompts is used for defining variables, which might be used in template. for more detail, refer to [inquirer](https://www.npmjs.com/package/inquirer). 
@@ -103,7 +105,7 @@ module.exports = config
 ```
 
 
-#### A template sample
+#### Step 3 Edit template file
 
 All variables are under root, like `root.className`, Which is same it in `config.js`. We can get path which we input from `root.$PATH` and get template which we selected from `root.$TEMPLATE`
 
@@ -128,7 +130,8 @@ export default class <%=root.className%> extends Vue {
 
 ```
 
-#### A sample generated file, like below.  
+
+#### Step 3 Since you have generated the template, the generated file likes below.
 
 NOTE:If you don't wanna generate test files, we cannot decide except you don't define in template folder. About this, We will improve it later, like prompting a question to let you to decide whether you generate test files.
 
@@ -152,8 +155,6 @@ export default class FooBar extends Vue {
 }
 
 ```
-
-
 
 
 ### Dependencies
