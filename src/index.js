@@ -3,24 +3,32 @@
 const inquirer = require('inquirer')
 const fs = require('fs')
 const ejs = require('ejs')
-const CURR_DIR = process.cwd()
+const chalk = require('chalk')
 
-//const dirname = __dirname + '/..'
-const dirname = CURR_DIR
+const defaultDirname = __dirname + '/..'
 
-const CHOICES = fs.readdirSync(`${dirname}/templates`)
+const dirname = process.cwd() // user root folder
+const cLocal = chalk.gray('(local)')
 
-const QUESTIONS = [
+// default templates which provided by anno-cli package
+let defaultChoices = fs.readdirSync(`${defaultDirname}/templates`)
+
+// templates which provided locally
+let choices = fs.readdirSync(`${dirname}/templates`).map((item) => item + cLocal)
+
+choices.push(...defaultChoices)
+
+const questions = [
   {
-    name: 'templateChoice',
+    name: 'template',
     type: 'list',
     message: 'What template would you like to generate?',
-    choices: CHOICES,
+    choices: choices,
   },
   {
-    name: 'projectName',
+    name: 'path',
     type: 'input',
-    message: 'folder name:',
+    message: 'Path:',
     validate: function (input) {
       if (/^([A-Za-z\-\_\/\d])+$/.test(input)) return true
       else return 'folder name may only include letters, numbers, underscores and hashes.'
@@ -28,16 +36,36 @@ const QUESTIONS = [
   },
 ]
 
-inquirer.prompt(QUESTIONS).then((answers) => {
-  const templatePath = `${dirname}/templates/${answers.templateChoice}`
+inquirer.prompt(questions).then((answers) => {
+  const isLocal = answers.template.indexOf(cLocal) === -1 ? defaultDirname : dirname
+  const tmp = answers.template.replace(cLocal, '')
+  const templatePath = `${isLocal ? defaultDirname : dirname}/templates/${tmp}`
   const config = require(templatePath + '/config')
 
   inquirer.prompt(config.prompts).then((cAnswers) => {
     answers = Object.assign(answers, cAnswers)
+    let tempDirs = fs.readdirSync(templatePath)
+    tempDirs.map((file) => {
+      if (file === 'config.js') return
 
-    console.log(answers)
-    makeDir(CURR_DIR + '/', answers.projectName)
-    //createDirectoryContents(templatePath, answers)
+      const stats = fs.statSync(origFilePath)
+
+      if (stats.isFile()) {
+        makeDir(CURR_DIR + '/', answers.path)
+        const origFilePath = `${templatePath}/${file}`
+
+        // Copy file to destination
+        handleSingleFile(origFilePath)
+      } else {
+        // If it's a folder, we need to judge it whether we need to copy it
+        // to other folder according to config
+      }
+
+      makeDir(CURR_DIR + config.map[''], answers.projectName)
+
+      //createDirectoryContents(templatePath, answers)
+      console.log(tempDirs)
+    })
   })
 })
 
@@ -56,12 +84,20 @@ function makeDir(parentPath, subPath) {
   }
 }
 
+function handleSingleFile(orig, writePath, answers) {
+  const contents = fs.readFileSync(orig, 'utf8')
+  // Apply ejs to file
+  // ...
+
+  fs.writeFileSync(writePath, contents, 'utf8')
+}
+
+function handleFolder(folder, dest) {}
+
 function createDirectoryContents(templatePath, answers) {
   const filesToCreate = fs.readdirSync(templatePath)
 
   filesToCreate.forEach((file) => {
-    if (file === 'config.js') return
-
     const origFilePath = `${templatePath}/${file}`
 
     console.log(file)

@@ -1,8 +1,6 @@
 const config = {
   map: {
     src: 'src',
-    e2e: 'tests/e2e',
-    unit: 'tests/unit',
   },
   prompts: [
     {
