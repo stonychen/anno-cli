@@ -6,7 +6,7 @@
   "bin": "./src/index.js",
   "author": "Stony Chen",
   "license": "MIT",
-  "keywords": [],
+  "keywords": ["anno-cli","anno.js","cli","template"],
   "scripts": {
     "dev": "node ./src/index.js"
   },

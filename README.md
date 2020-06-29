@@ -1,14 +1,14 @@
-# anno-cli
+# Anno-cli
 
-## What is anno-cli
+## What is Anno-cli
 
-anno-cli is cli tool which can be used with [Anno.js](https://stonychen.github.io/anno.js/) together.
+Anno-cli is a cli tool which can be used with [Anno.js](https://stonychen.github.io/anno.js/) together.
 
 ## Getting Started
 
 ### Installation
 
-`npm i -g anno-cli` or `npm i -save-dev anno-cli` to install the latest version of anno-cli.
+`$ npm i -g anno-cli` or `$ npm i -save-dev anno-cli` to install the latest version of anno-cli.
 
 ### Generate template
 
@@ -28,10 +28,10 @@ $ anno-cli t
 ```
 $ anno-cli t
 ? What template would you like to generate? foo-bar(local)
-? What path would you like to generate to? path: sell/foo-bar
+? What path would you like to generate to? path: foo-bar
 ```
 
-#### Step 3 Input class name, and enter. You will successfully generate files according the template. NOTE: The class name can be defined in your own way.
+#### Step 3 Input class name, and press enter. You will generate files according your defined template. NOTE: The class name can be defined in your own way.
 
 ```
 $ anno-cli t
@@ -45,7 +45,7 @@ $ anno-cli t
 ? What template would you like to generate? foo-bar(local)
 ? What path would you like to generate to? path: foo-bar
 ? What class name do you prefer? className: FooBar
-/anno.js/tests/e2e/sell/foo-bar/test.spec.js
+/anno.js/tests/e2e/foo-bar/test.spec.js
 /anno.js/src/foo-bar/bar/index.module.scss
 /anno.js/src/foo-bar/bar/index.tsx
 /anno.js/src/foo-bar/index.module.scss
@@ -55,7 +55,7 @@ $ anno-cli t
 
 ### Define Your Own Template
 
-You can define your own local template on local folder `./templates`.
+You can define your own local template in your local folder `./templates`.
 
 #### Step 1 Template folder structure
 ```
@@ -77,16 +77,16 @@ templates
 
 #### Step 2 Config template
 
-1. config.map is used for matching the template path `./templates/src` to the destination path `./src/(path)`.
-2. config.prompts is used for defining variables, which might be used in template. For more detail, refer to [inquirer](https://www.npmjs.com/package/inquirer). 
+1. config.map is used for matching the template path to the destination path.
+2. config.prompts is used for defining variables which can be input in questions, which might be used in template later. For more detail, refer to [inquirer](https://www.npmjs.com/package/inquirer). 
   
 config.js
 ```
 const config = {
   map: {
-    src: 'src', // 
-    e2e: 'tests/e2e', //
-    unit: 'tests/unit', //
+    src: 'src', 
+    e2e: 'tests/e2e', 
+    unit: 'tests/unit', 
   },
   prompts: [
     {
@@ -107,7 +107,7 @@ module.exports = config
 
 #### Step 3 Edit template file
 
-1. We use [ejs](https://github.com/mde/ejs) to render remplate.
+1. We use [ejs](https://github.com/mde/ejs) to render remplate. For more detail, refer to [ejs](https://github.com/mde/ejs).
 2. All variables are under root, like `root.className`, which should be same as it in `config.js`. We can get path from `root.$PATH` and get templat which we selected from `root.$TEMPLATE`.
 
 templates/foo-bar/src/index.page.tsx
@@ -132,7 +132,7 @@ export default class <%=root.className%> extends Vue {
 ```
 
 
-#### Step 3 Since you have generated the template, the generated file likes below.
+#### Step 3 Your generated files likes below.
 
 NOTE:If you don't wanna generate test files, we cannot decide except you don't define in template folder. About this, We will improve it later, like prompting a question to let you to decide whether you generate test files.
 
