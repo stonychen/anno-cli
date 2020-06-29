@@ -8,7 +8,7 @@ Anno-cli is a cli tool which can be used with [Anno.js](https://stonychen.github
 
 ### Installation
 
-`$ npm i -g anno-cli` or `$ npm i -save-dev anno-cli` to install the latest version of anno-cli.
+Run `$ npm i -g anno-cli` or `$ npm i -save-dev anno-cli` to install the latest version of anno-cli.
 
 ### Generate template
 
@@ -31,7 +31,7 @@ $ anno-cli t
 ? What path would you like to generate to? path: foo-bar
 ```
 
-#### Step 3 Input class name, and press enter. You will generate files according your defined template. NOTE: The class name can be defined in your own way.
+#### Step 3 Input class name, and press enter. You will generate files according to your own defined template. NOTE: The class name can be defined in your own way.
 
 ```
 $ anno-cli t
@@ -108,7 +108,7 @@ module.exports = config
 #### Step 3 Edit template file
 
 1. We use [ejs](https://github.com/mde/ejs) to render remplate. For more detail, refer to [ejs](https://github.com/mde/ejs).
-2. All variables are under root, like `root.className`, which should be same as it in `config.js`. We can get path from `root.$PATH` and get templat which we selected from `root.$TEMPLATE`.
+2. All variables are under root, like `root.className`, which should be same as it in `config.js`. We can get path from `root.$PATH` and get template which we selected from `root.$TEMPLATE`.
 
 templates/foo-bar/src/index.page.tsx
 ```
@@ -132,9 +132,9 @@ export default class <%=root.className%> extends Vue {
 ```
 
 
-#### Step 3 Your generated files likes below.
+#### Step 3 The generated files likes below.
 
-NOTE:If you don't wanna generate test files, we cannot decide except you don't define in template folder. About this, We will improve it later, like prompting a question to let you to decide whether you generate test files.
+NOTE:If you don't wanna generate test files, we cannot decide except you don't define it in template folder. About this, We will improve it later, like prompting a question to let you to decide whether you generate test files.
 
 src/foo-bar/index.page.tsx
 ```
