@@ -2,7 +2,7 @@
 
 const inquirer = require('inquirer')
 const fs = require('fs')
-const fsp = require('fs-path')
+const makeDir = require('make-dir')
 const ejs = require('ejs')
 const chalk = require('chalk')
 
@@ -82,7 +82,7 @@ function handleSingleFile(orig, dest, file, answers) {
   let newContent = ejs.render(content, { root: answers })
 
   console.log(writePath)
-  fsp.mkdir(dest, () => {
+  makeDir(dest).then(() => {
     fs.writeFileSync(writePath, newContent, 'utf8')
   })
 }
