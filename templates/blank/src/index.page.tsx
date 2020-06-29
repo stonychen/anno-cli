@@ -1,15 +1,13 @@
 import { Component, Vue } from 'vue-property-decorator'
-
-
-//import style from './index.module.scss'
+import style from './index.module.scss'
 
 
 @Component({})
-export default class Layout extends Vue {
+export default class <%= config.className %> extends Vue {
 
   private render() {
     return (
-      <div class="app-layout">
+      <div class={style.home} id='text'>
         This is home page
       </div>
     )
