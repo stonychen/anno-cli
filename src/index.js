@@ -17,22 +17,6 @@ var argv = require('yargs')
       template()
     },
   })
-  // .command({
-  //   command: 'serve',
-  //   aliases: ['s'],
-  //   desc: 'Run project in development mode',
-  //   handler: (argv) => {
-  //     console.log('To be implemented.')
-  //   },
-  // })
-  // .command({
-  //   command: 'build',
-  //   aliases: ['b'],
-  //   desc: 'Build project in production mode',
-  //   handler: (argv) => {
-  //     console.log('To be implemented.')
-  //   },
-  // })
   .demandCommand()
   .help('h')
   .alias('h', 'help')

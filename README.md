@@ -60,7 +60,7 @@ You can define your own local template in your local folder `./templates`.
 #### Step 1 Template folder structure
 ```
 templates
-├── foo-bar
+└── foo-bar
     ├── e2e
     │   └── test.spec.js 
     ├── src
@@ -71,7 +71,7 @@ templates
     │   └── index.page.tsx
     ├── unit
     │   └── test.spec.js 
-    └── config.json
+    └── config.js
 ```
 
 
