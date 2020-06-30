@@ -1,10 +1,5 @@
 #!/usr/bin/env node
-const inquirer = require('inquirer')
-const fs = require('fs')
-const makeDir = require('make-dir')
-const ejs = require('ejs')
-const chalk = require('chalk')
-const template = require('./template')
+const generateTemplate = require('./generate-template')
 
 var argv = require('yargs')
   .usage('Usage: $0 <command> [options]')
@@ -14,7 +9,7 @@ var argv = require('yargs')
     desc: 'Generate template',
     handler: (argv) => {
       // We here can pass a template name to skip template selection.
-      template()
+      generateTemplate()
     },
   })
   .demandCommand()

@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const inquirer = require('inquirer')
 const fs = require('fs')
 const makeDir = require('make-dir')
@@ -102,5 +100,3 @@ function handleFolder(folder, dest, answers) {
     }
   })
 }
-
-// sudo rm -rf /usr/local/bin/anno-cli
