@@ -1,14 +1,15 @@
-const inquirer = require('inquirer')
-const fs = require('fs')
-const makeDir = require('make-dir')
-const _ejs = require('ejs')
-const chalk = require('chalk')
+import inquirer from 'inquirer'
+import fs from 'fs'
+import makeDir from 'make-dir'
+import _ejs from 'ejs'
+import chalk from 'chalk'
 
 const _DEFAULTROOT = __dirname + '/..'
 
 const _USERROOT = process.cwd() // user root folder
 const cLocal = chalk.gray('(local)')
-module.exports = () => {
+
+const generateTemplate = () => {
   // default templates which provided by anno-cli package
   let defaultChoices = fs.readdirSync(`${_DEFAULTROOT}/templates`)
 
@@ -28,28 +29,32 @@ module.exports = () => {
       name: '$PATH',
       type: 'input',
       message: 'What path would you like to generate to? path:',
-      validate: function (input) {
-        if (/^([A-Za-z\-\_\/\d])+$/.test(input)) return true
+      validate: (input1: string) => {
+        if (/^([A-Za-z\-\_\/\d])+$/.test(input1)) return true
         else return 'Path may only include letters, numbers, underscores and hashes.'
       },
     },
   ]
 
   inquirer.prompt(questions).then((answers) => {
-    const isLocal = answers.$TEMPLATE.indexOf(cLocal) === -1 ? _DEFAULTROOT : _USERROOT
-    const tmp = answers.$TEMPLATE.replace(cLocal, '')
+    const isLocal = (answers.$TEMPLATE as any).indexOf(cLocal) === -1 ? _DEFAULTROOT : _USERROOT
+    const tmp = (answers.$TEMPLATE as any).replace(cLocal, '')
 
     const templatePath = `${isLocal ? _DEFAULTROOT : _USERROOT}/templates/${tmp}`
     const config = require(templatePath + '/config')
 
-    inquirer.prompt(config.prompts).then((cAnswers) => {
+    inquirer.prompt(config.prompts).then((cAnswers: any) => {
       answers = Object.assign(answers, cAnswers)
       handleTemplates(templatePath, config, answers)
     })
   })
 }
 
-function handleTemplates(templatePath, config, answers) {
+export default generateTemplate
+
+
+
+function handleTemplates(templatePath: string, config: any, answers: any) {
   let tempDirs = fs.readdirSync(templatePath)
   tempDirs.map((file) => {
     if (file === 'config.js') return
@@ -73,7 +78,7 @@ function handleTemplates(templatePath, config, answers) {
   })
 }
 
-function handleSingleFile(orig, dest, file, answers) {
+function handleSingleFile(orig: string, dest: string, file: string, answers: any) {
   const content = fs.readFileSync(orig, 'utf8')
   const writePath = `${dest}/${file}`
 
@@ -85,7 +90,7 @@ function handleSingleFile(orig, dest, file, answers) {
   })
 }
 
-function handleFolder(folder, dest, answers) {
+function handleFolder(folder: string, dest: string, answers: any) {
   const filesToCreate = fs.readdirSync(folder)
 
   filesToCreate.forEach((file) => {
@@ -100,3 +105,5 @@ function handleFolder(folder, dest, answers) {
     }
   })
 }
+
+

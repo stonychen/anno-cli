@@ -1,13 +1,11 @@
-#!/usr/bin/env node
-const generateTemplate = require('./generate-template')
+import generateTemplate from './generate-template'
+import yargs from 'yargs'
 
-var argv = require('yargs')
-  .usage('Usage: $0 <command> [options]')
+yargs.usage('Usage: $0 <command> [options]')
   .command({
     command: 'temp',
     aliases: ['template', 't'],
-    desc: 'Generate template',
-    handler: (argv) => {
+    handler: () => {
       // We here can pass a template name to skip template selection.
       generateTemplate()
     },
