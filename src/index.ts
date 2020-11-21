@@ -1,5 +1,5 @@
 import generateTemplate from './generate-template'
-import yargs from 'yargs'
+import yargs = require('yargs')
 
 yargs.usage('Usage: $0 <command> [options]')
   .command({

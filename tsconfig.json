@@ -1,16 +1,14 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
+    "target": "es5",
+    "module": "commonjs",
     "strict": true,
-    "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "sourceMap": false,
+    "sourceMap": true,
     "baseUrl": ".",
-    "declaration": true,
     "outDir": "dist",
     "types": [
       "node"
@@ -29,7 +27,6 @@
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.tsx",
   ],
   "exclude": [
     "node_modules"

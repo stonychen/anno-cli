@@ -1,8 +1,8 @@
-import inquirer from 'inquirer'
-import fs from 'fs'
-import makeDir from 'make-dir'
-import _ejs from 'ejs'
-import chalk from 'chalk'
+import inquirer = require('inquirer')
+import fs = require('fs')
+import makeDir = require('make-dir')
+import _ejs = require('ejs')
+import chalk = require('chalk')
 
 const _DEFAULTROOT = __dirname + '/..'
 
@@ -18,7 +18,7 @@ const generateTemplate = () => {
 
   choices.push(...defaultChoices)
 
-  const questions = [
+  const questions: inquirer.QuestionCollection<any> = [
     {
       name: '$TEMPLATE',
       type: 'list',
@@ -29,7 +29,7 @@ const generateTemplate = () => {
       name: '$PATH',
       type: 'input',
       message: 'What path would you like to generate to? path:',
-      validate: (input1: string) => {
+      validate: (input1) => {
         if (/^([A-Za-z\-\_\/\d])+$/.test(input1)) return true
         else return 'Path may only include letters, numbers, underscores and hashes.'
       },
